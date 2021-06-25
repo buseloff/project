@@ -221,6 +221,15 @@ const resolveOffer = async (
 
 module.exports.setOfferStatus = async (req, res, next) => {
   let transaction;
+  const {
+    offset: offsetNumb,
+    limit: limitNumb,
+    typeIndex: typeIndexNumb,
+    contest: contestIdNumb,
+    industry: industryStr,
+    awardSort: awardSortStr,
+    ownEntries: ownEntriesStr,
+  } = req;
   if (req.body.command === "reject") {
     try {
       const offer = await rejectOffer(
@@ -285,7 +294,6 @@ module.exports.getCustomersContests = (req, res, next) => {
 };
 
 module.exports.getContests = (req, res, next) => {
- 
   const {
     query: {
       offset: offsetNumb,
