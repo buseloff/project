@@ -1,6 +1,5 @@
 import React from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import classNames from "classnames";
 import {
   getContestsForCustomer,
@@ -12,6 +11,7 @@ import ContestsContainer from "../ContestsContainer/ContestsContainer";
 import ContestBox from "../ContestBox/ContestBox";
 import styles from "./CustomerDashboard.module.sass";
 import TryAgain from "../TryAgain/TryAgain";
+import TransactionPage from "../../pages/TransactionPage";
 
 class CustomerDashboard extends React.Component {
   loadMore = (startFrom) => {
@@ -112,10 +112,18 @@ class CustomerDashboard extends React.Component {
           >
             Inactive contests
           </div>
-          <div className={styles.startContestBtn}>
-            <Link  to="/transactions">
-              Transactions information
-            </Link>
+          <div
+            onClick={() =>
+              this.props.newFilter(CONSTANTS.CONTEST_STATUS_TRANSACTIONS)
+            }
+            className={classNames({
+              [styles.activeFilter]:
+                CONSTANTS.CONTEST_STATUS_TRANSACTIONS === customerFilter,
+              [styles.filter]:
+                CONSTANTS.CONTEST_STATUS_TRANSACTIONS !== customerFilter,
+            })}
+          >
+            Transactions
           </div>
         </div>
         <div className={styles.contestsContainer}>

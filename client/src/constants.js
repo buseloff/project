@@ -2,6 +2,8 @@ const env = process.env.NODE_ENV || "development";
 const serverIP = "localhost";
 const serverPort = 3000;
 export default {
+  INCOME: "INCOME",
+  EXPENSE: "EXPENSE",
   CUSTOMER: "customer",
   CREATOR: "creator",
   CONTACT_US: {
@@ -10,6 +12,7 @@ export default {
   CONTEST_STATUS_ACTIVE: "active",
   CONTEST_STATUS_FINISHED: "finished",
   CONTEST_STATUS_PENDING: "pending",
+  CONTEST_STATUS_TRANSACTIONS: "transactions",
   NAME_CONTEST: "name",
   LOGO_CONTEST: "logo",
   TAGLINE_CONTEST: "tagline",

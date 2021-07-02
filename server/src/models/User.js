@@ -1,3 +1,7 @@
+const {
+  permissions: { roles },
+} = require("../config/app");
+
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define(
     "Users",
@@ -35,7 +39,7 @@ module.exports = (sequelize, DataTypes) => {
         defaultValue: "anon.png",
       },
       role: {
-        type: DataTypes.ENUM("customer", "creator"),
+        type: DataTypes.STRING,
         allowNull: false,
       },
       balance: {
@@ -65,6 +69,10 @@ module.exports = (sequelize, DataTypes) => {
     User.hasMany(models.Offers, { foreignKey: "userId", sourceKey: "id" });
     User.hasMany(models.Contests, { foreignKey: "userId", sourceKey: "id" });
     User.hasMany(models.Ratings, { foreignKey: "userId", sourceKey: "id" });
+    User.hasMany(models.Transactions, {
+      foreignKey: "userId",
+      sourceKey: "id",
+    });
   };
 
   return User;
